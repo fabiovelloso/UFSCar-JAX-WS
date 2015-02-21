@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.ufscar.jaxws;
+package br.ufscar.jaxws.bindings;
 
 import javax.jws.WebService;
 import javax.jws.WebMethod;
@@ -13,15 +13,16 @@ import javax.jws.soap.SOAPBinding;
 /**
  *
  * @author fabio
+ * 
+ * parameterStyle must be SOAPBinding.ParameterStyle.WRAPPED
  */
-@WebService(serviceName = "HelloWorldDocumentLiteral")
-@SOAPBinding(style = SOAPBinding.Style.DOCUMENT, use = SOAPBinding.Use.LITERAL )
-public class HelloWorldDocumentLiteral {
+@WebService(serviceName = "HelloWorldRPCLiteral")
+@SOAPBinding(style = SOAPBinding.Style.RPC, use = SOAPBinding.Use.LITERAL,
+        parameterStyle =SOAPBinding.ParameterStyle.WRAPPED )
+public class HelloWorldRPCLiteral {
 
     /**
      * This is a sample web service operation
-     * @param parameter
-     * @return 
      */
     @WebMethod(operationName = "hello")
     public String hello(@WebParam(name = "name") String parameter) {
